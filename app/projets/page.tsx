@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Header } from '@/components/layout/Header'
 import { getAllProjects } from '@/lib/projects'
+import { ArrowUpRight, FileText } from 'lucide-react'
 
 export const metadata = {
     title: 'Nos Projets | TEYLIOM EXPERIENCE',
@@ -21,17 +22,17 @@ export default function ProjectsPage() {
                         </h2>
                         <div className="h-1 w-20 rounded-full bg-primary" />
                         <p className="max-w-2xl text-base text-slate-500 font-light md:text-lg">
-                            Découvrez notre collection de chefs-d'œuvre architecturaux conçus pour l'investisseur visionnaire.
+                            Découvrez notre collection de chefs-d&apos;œuvre architecturaux conçus pour l&apos;investisseur visionnaire.
                         </p>
                     </div>
 
                     {/* Projects Grid */}
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 min-h-[600px] grow">
-                        {projects.map((project, index) => (
+                        {projects.map((project) => (
                             <Link
                                 key={project.id}
                                 href={`/projets/${project.slug}`}
-                                className={`card-project group relative flex aspect-[4/3] w-full flex-col justify-end animate-enter delay-${(index + 1) * 100}`}
+                                className="card-project group relative flex aspect-[4/3] w-full flex-col justify-end"
                             >
                                 {/* Background Image */}
                                 <div
@@ -65,7 +66,7 @@ export default function ProjectsPage() {
                                             </p>
                                         </div>
                                         <div className="flex size-12 items-center justify-center rounded-full border border-slate-200 bg-white/60 text-slate-900 backdrop-blur-sm transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110">
-                                            <span className="material-symbols-outlined">arrow_outward</span>
+                                            <ArrowUpRight size={20} />
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +87,7 @@ export default function ProjectsPage() {
                             className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-primary-light px-6 text-sm font-bold tracking-wide text-white transition-all hover:shadow-lg hover:shadow-primary/25 md:w-auto md:min-w-[240px]"
                         >
                             <span>Accéder au formulaire</span>
-                            <span className="material-symbols-outlined text-[18px]">assignment</span>
+                            <FileText size={18} />
                         </Link>
                     </div>
                 </div>

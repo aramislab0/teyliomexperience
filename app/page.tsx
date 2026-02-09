@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Building2, ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -6,7 +7,7 @@ export default function HomePage() {
       {/* Background texture */}
       <div className="absolute inset-0 z-0">
         <div
-          className="h-full w-full object-cover object-center opacity-10 mix-blend-multiply contrast-125 grayscale"
+          className="h-full w-full opacity-10 mix-blend-multiply contrast-125 grayscale"
           style={{
             backgroundImage: 'url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920")',
             backgroundSize: 'cover',
@@ -20,7 +21,7 @@ export default function HomePage() {
       <header className="relative z-10 w-full flex justify-center py-8 md:py-12 animate-enter">
         <div className="flex flex-col items-center gap-3 opacity-90 hover:opacity-100 transition-opacity duration-300">
           <div className="size-10 text-primary">
-            <span className="material-symbols-outlined text-4xl">apartment</span>
+            <Building2 size={40} />
           </div>
         </div>
       </header>
@@ -53,9 +54,7 @@ export default function HomePage() {
               <span className="relative z-10 text-sm md:text-base font-bold uppercase tracking-[0.15em]">
                 Entrer dans l&apos;expérience
               </span>
-              <span className="material-symbols-outlined relative z-10 text-[20px] transition-transform duration-300 group-hover:translate-x-1">
-                arrow_forward
-              </span>
+              <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </Link>
           </div>

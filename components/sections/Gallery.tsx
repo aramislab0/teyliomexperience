@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Lightbox } from './Lightbox'
+import { ZoomIn } from 'lucide-react'
 
 interface GalleryProps {
     images: string[]

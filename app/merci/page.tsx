@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Check, Home, Info } from 'lucide-react'
 
 export const metadata = {
     title: 'Merci | TEYLIOM EXPERIENCE',

@@ -9,7 +9,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: 'TEYLIOM EXPERIENCE',
-  description: 'Découvrez nos résidences d\'exception à Dakar',
+  description: 'Une invitation à l\'excellence immobilière',
 }
 
 export default function RootLayout({
@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
-      <body className="min-h-screen bg-dark text-light antialiased">
+    <html lang="fr" suppressHydrationWarning>
+      <body className="min-h-screen bg-background" suppressHydrationWarning>
         {children}
       </body>
     </html>

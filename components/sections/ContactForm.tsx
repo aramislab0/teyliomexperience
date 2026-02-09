@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { User, Badge, Mail, Phone, Building2, ChevronDown, Info } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { getAllProjects } from '@/lib/projects'
 
@@ -46,7 +47,6 @@ export function ContactForm() {
         },
     })
 
-    // Préremplir le projet si paramètre URL
     useEffect(() => {
         if (preselectedProject) {
             setValue('project', preselectedProject)
@@ -54,7 +54,6 @@ export function ContactForm() {
     }, [preselectedProject, setValue])
 
     const onSubmit = async (data: FormData) => {
-        // Anti-spam check
         if (data.honeypot) {
             router.push('/merci')
             return
@@ -87,7 +86,6 @@ export function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* Honeypot - invisible pour les humains */}
             <input
                 type="text"
                 {...register('honeypot')}
@@ -103,7 +101,7 @@ export function ContactForm() {
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">person</span>
+                        <User size={20} className="text-slate-400" />
                     </div>
                     <input
                         id="firstName"
@@ -126,7 +124,7 @@ export function ContactForm() {
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">badge</span>
+                        <Badge size={20} className="text-slate-400" />
                     </div>
                     <input
                         id="lastName"
@@ -149,7 +147,7 @@ export function ContactForm() {
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">mail</span>
+                        <Mail size={20} className="text-slate-400" />
                     </div>
                     <input
                         id="email"
@@ -172,7 +170,7 @@ export function ContactForm() {
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">call</span>
+                        <Phone size={20} className="text-slate-400" />
                     </div>
                     <input
                         id="phone"
@@ -195,7 +193,7 @@ export function ContactForm() {
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">apartment</span>
+                        <Building2 size={20} className="text-slate-400" />
                     </div>
                     <select
                         id="project"
@@ -211,7 +209,7 @@ export function ContactForm() {
                         ))}
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                        <span className="material-symbols-outlined text-[20px] text-slate-400">expand_more</span>
+                        <ChevronDown size={20} className="text-slate-400" />
                     </div>
                 </div>
                 {errors.project && (
@@ -222,7 +220,7 @@ export function ContactForm() {
             {/* Error message */}
             {status === 'error' && (
                 <div className="flex items-start gap-3 rounded-lg bg-red-50 border border-red-200 p-4">
-                    <span className="material-symbols-outlined text-red-500">error</span>
+                    <Info size={20} className="text-red-500 flex-shrink-0" />
                     <p className="text-sm text-red-700">
                         Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
                     </p>

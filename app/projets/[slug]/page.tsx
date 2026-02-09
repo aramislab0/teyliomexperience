@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Header } from '@/components/layout/Header'
 import { Gallery } from '@/components/sections/Gallery'
 import { getProjectBySlug } from '@/lib/projects'
+import { Check, Glasses, ArrowRight } from 'lucide-react'
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const project = getProjectBySlug(params.slug)
@@ -75,7 +76,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                                     <li key={index} className="flex items-start gap-3">
                                         <div className="flex-shrink-0 mt-0.5">
                                             <div className="flex size-5 items-center justify-center rounded-full bg-primary/10">
-                                                <span className="material-symbols-outlined text-[14px] text-primary">check</span>
+                                                <Check size={14} className="text-primary" />
                                             </div>
                                         </div>
                                         <span className="text-sm text-slate-700">{feature}</span>
@@ -115,7 +116,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                                         href={`/visite/${project.slug}`}
                                         className="flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary bg-white px-6 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white"
                                     >
-                                        <span className="material-symbols-outlined text-[20px]">360</span>
+                                        <Glasses size={20} />
                                         <span>Visite virtuelle 360°</span>
                                     </Link>
                                 )}
@@ -124,7 +125,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                                     className="flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/25"
                                 >
                                     <span>Je suis intéressé</span>
-                                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                    <ArrowRight size={18} />
                                 </Link>
                             </div>
                         </div>

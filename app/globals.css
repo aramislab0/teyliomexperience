@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @layer base {
   html {
@@ -28,11 +27,6 @@
   .card-project {
     @apply relative overflow-hidden rounded-lg bg-white shadow-lg shadow-gray-200/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl;
   }
-}
-
-/* Material Symbols */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 /* Animations */

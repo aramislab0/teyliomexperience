@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { Header } from '@/components/layout/Header'
 import { ContactForm } from '@/components/sections/ContactForm'
+import { Mail, BadgeHelp } from 'lucide-react'
 
 export const metadata = {
     title: 'Contact | TEYLIOM EXPERIENCE',
