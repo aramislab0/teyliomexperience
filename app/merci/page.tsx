@@ -22,7 +22,7 @@ export default function ThankYouPage() {
                 {/* Success Icon */}
                 <div className="mb-8 flex size-20 items-center justify-center rounded-full bg-primary/10 animate-enter">
                     <div className="flex size-16 items-center justify-center rounded-full bg-primary">
-                        <span className="material-symbols-outlined text-4xl text-white">check</span>
+                        <Check size={36} className="text-white" />
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@ export default function ThankYouPage() {
                         href="/"
                         className="flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/25"
                     >
-                        <span className="material-symbols-outlined text-[18px]">home</span>
+                        <Home size={18} />
                         <span>Retour à l'accueil</span>
                     </Link>
                     <Link
@@ -60,7 +60,7 @@ export default function ThankYouPage() {
                 <div className="mt-16 rounded-lg border border-slate-200 bg-white/60 backdrop-blur-sm p-6 animate-enter delay-400">
                     <div className="flex items-start gap-4">
                         <div className="flex size-10 flex-shrink-0 items-center justify-center rounded-full bg-gold/10">
-                            <span className="material-symbols-outlined text-[20px] text-gold">info</span>
+                            <Info size={20} className="text-gold" />
                         </div>
                         <div className="text-left">
                             <p className="mb-2 text-sm font-bold text-slate-900">Que se passe-t-il ensuite ?</p>

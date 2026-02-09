@@ -46,7 +46,7 @@ export function Gallery({ images, projectName }: GalleryProps) {
                         {/* Zoom icon on hover */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div className="flex size-12 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-lg">
-                                <span className="material-symbols-outlined text-primary text-[24px]">zoom_in</span>
+                                <ZoomIn size={24} className="text-primary" />
                             </div>
                         </div>
                     </motion.div>

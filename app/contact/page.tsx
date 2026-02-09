@@ -17,7 +17,7 @@ export default function ContactPage() {
                     <div className="text-center mb-12 animate-enter">
                         <div className="mb-4 inline-flex items-center justify-center">
                             <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
-                                <span className="material-symbols-outlined text-primary text-[28px]">mail</span>
+                                <Mail size={28} className="text-primary" />
                             </div>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-light text-slate-900 mb-4">
@@ -47,7 +47,7 @@ export default function ContactPage() {
                     <div className="mt-8 rounded-lg border border-gold/20 bg-gradient-to-br from-gold/5 to-transparent p-6 animate-enter delay-200">
                         <div className="flex items-start gap-4">
                             <div className="flex size-10 flex-shrink-0 items-center justify-center rounded-full bg-gold/10">
-                                <span className="material-symbols-outlined text-gold text-[20px]">support_agent</span>
+                                <BadgeHelp size={20} className="text-gold" />
                             </div>
                             <div>
                                 <p className="mb-2 text-sm font-bold text-slate-900">Besoin d'aide ?</p>
