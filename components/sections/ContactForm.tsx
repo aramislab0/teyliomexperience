@@ -86,7 +86,7 @@ export function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Honeypot - invisible pour les humains */}
             <input
                 type="text"
@@ -98,103 +98,132 @@ export function ContactForm() {
 
             {/* Prénom */}
             <div>
-                <label htmlFor="firstName" className="block text-light/80 text-sm mb-2">
+                <label htmlFor="firstName" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Prénom *
                 </label>
-                <input
-                    id="firstName"
-                    type="text"
-                    {...register('firstName')}
-                    className={`w-full bg-dark-lighter border ${errors.firstName ? 'border-red-500' : 'border-white/10 focus:border-primary'
-                        } rounded-sm px-4 py-3 text-light outline-none transition-colors`}
-                    placeholder="Votre prénom"
-                />
+                <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">person</span>
+                    </div>
+                    <input
+                        id="firstName"
+                        type="text"
+                        {...register('firstName')}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.firstName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                        placeholder="Votre prénom"
+                    />
+                </div>
                 {errors.firstName && (
-                    <p className="text-red-400 text-sm mt-1">{errors.firstName.message}</p>
+                    <p className="mt-1 text-sm text-red-500">{errors.firstName.message}</p>
                 )}
             </div>
 
             {/* Nom */}
             <div>
-                <label htmlFor="lastName" className="block text-light/80 text-sm mb-2">
+                <label htmlFor="lastName" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Nom *
                 </label>
-                <input
-                    id="lastName"
-                    type="text"
-                    {...register('lastName')}
-                    className={`w-full bg-dark-lighter border ${errors.lastName ? 'border-red-500' : 'border-white/10 focus:border-primary'
-                        } rounded-sm px-4 py-3 text-light outline-none transition-colors`}
-                    placeholder="Votre nom"
-                />
+                <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">badge</span>
+                    </div>
+                    <input
+                        id="lastName"
+                        type="text"
+                        {...register('lastName')}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.lastName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                        placeholder="Votre nom"
+                    />
+                </div>
                 {errors.lastName && (
-                    <p className="text-red-400 text-sm mt-1">{errors.lastName.message}</p>
+                    <p className="mt-1 text-sm text-red-500">{errors.lastName.message}</p>
                 )}
             </div>
 
             {/* Email */}
             <div>
-                <label htmlFor="email" className="block text-light/80 text-sm mb-2">
+                <label htmlFor="email" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Email *
                 </label>
-                <input
-                    id="email"
-                    type="email"
-                    {...register('email')}
-                    className={`w-full bg-dark-lighter border ${errors.email ? 'border-red-500' : 'border-white/10 focus:border-primary'
-                        } rounded-sm px-4 py-3 text-light outline-none transition-colors`}
-                    placeholder="votre@email.com"
-                />
+                <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">mail</span>
+                    </div>
+                    <input
+                        id="email"
+                        type="email"
+                        {...register('email')}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                        placeholder="votre@email.com"
+                    />
+                </div>
                 {errors.email && (
-                    <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                    <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
                 )}
             </div>
 
             {/* Téléphone */}
             <div>
-                <label htmlFor="phone" className="block text-light/80 text-sm mb-2">
+                <label htmlFor="phone" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Téléphone *
                 </label>
-                <input
-                    id="phone"
-                    type="tel"
-                    {...register('phone')}
-                    className={`w-full bg-dark-lighter border ${errors.phone ? 'border-red-500' : 'border-white/10 focus:border-primary'
-                        } rounded-sm px-4 py-3 text-light outline-none transition-colors`}
-                    placeholder="+221 77 123 45 67"
-                />
+                <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">call</span>
+                    </div>
+                    <input
+                        id="phone"
+                        type="tel"
+                        {...register('phone')}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.phone ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                        placeholder="+221 77 123 45 67"
+                    />
+                </div>
                 {errors.phone && (
-                    <p className="text-red-400 text-sm mt-1">{errors.phone.message}</p>
+                    <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
                 )}
             </div>
 
             {/* Projet */}
             <div>
-                <label htmlFor="project" className="block text-light/80 text-sm mb-2">
+                <label htmlFor="project" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Projet qui vous intéresse *
                 </label>
-                <select
-                    id="project"
-                    {...register('project')}
-                    className={`w-full bg-dark-lighter border ${errors.project ? 'border-red-500' : 'border-white/10 focus:border-primary'
-                        } rounded-sm px-4 py-3 text-light outline-none transition-colors`}
-                >
-                    <option value="">Sélectionnez un projet</option>
-                    {projects.map((project) => (
-                        <option key={project.slug} value={project.slug}>
-                            {project.name} — {project.location}
-                        </option>
-                    ))}
-                </select>
+                <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">apartment</span>
+                    </div>
+                    <select
+                        id="project"
+                        {...register('project')}
+                        className={`h-12 w-full appearance-none rounded-lg border bg-white pl-12 pr-10 text-slate-900 outline-none transition-colors ${errors.project ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                    >
+                        <option value="">Sélectionnez un projet</option>
+                        {projects.map((project) => (
+                            <option key={project.slug} value={project.slug}>
+                                {project.name} — {project.location}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                        <span className="material-symbols-outlined text-[20px] text-slate-400">expand_more</span>
+                    </div>
+                </div>
                 {errors.project && (
-                    <p className="text-red-400 text-sm mt-1">{errors.project.message}</p>
+                    <p className="mt-1 text-sm text-red-500">{errors.project.message}</p>
                 )}
             </div>
 
             {/* Error message */}
             {status === 'error' && (
-                <div className="bg-red-500/10 border border-red-500/30 rounded-sm p-4">
-                    <p className="text-red-400 text-sm">
+                <div className="flex items-start gap-3 rounded-lg bg-red-50 border border-red-200 p-4">
+                    <span className="material-symbols-outlined text-red-500">error</span>
+                    <p className="text-sm text-red-700">
                         Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
                     </p>
                 </div>
@@ -208,13 +237,13 @@ export function ContactForm() {
                 isLoading={status === 'loading'}
                 disabled={status === 'loading'}
             >
-                Envoyer ma demande
+                {status === 'loading' ? 'Envoi en cours...' : 'Envoyer ma demande'}
             </Button>
 
             {/* Privacy notice */}
-            <p className="text-light/40 text-xs text-center">
+            <p className="text-center text-xs text-slate-400">
                 En soumettant ce formulaire, vous acceptez que vos données soient traitées par Teyliom Properties
-                pour répondre à votre demande. Voir notre politique de confidentialité.
+                pour répondre à votre demande.
             </p>
         </form>
     )

@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
 import { ContactForm } from '@/components/sections/ContactForm'
 
 export const metadata = {
@@ -11,26 +10,54 @@ export default function ContactPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen pt-24 pb-16 flex items-center">
-                <div className="max-w-lg mx-auto px-6 w-full">
-                    <div className="text-center mb-10">
-                        <p className="text-primary text-sm tracking-[0.3em] uppercase mb-4">
-                            Contact
-                        </p>
-                        <h1 className="font-display text-4xl text-light mb-4">
-                            Parlons de votre projet
+            <main className="min-h-screen pt-24 pb-16 bg-background">
+                <div className="max-w-2xl mx-auto px-6">
+                    {/* Title */}
+                    <div className="text-center mb-12 animate-enter">
+                        <div className="mb-4 inline-flex items-center justify-center">
+                            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+                                <span className="material-symbols-outlined text-primary text-[28px]">mail</span>
+                            </div>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-light text-slate-900 mb-4">
+                            Parlons de <span className="font-bold text-primary">votre projet</span>
                         </h1>
-                        <p className="text-light/60">
-                            Nos conseillers sont à votre disposition pour répondre à toutes vos questions.
+                        <div className="mx-auto h-1 w-20 rounded-full bg-primary mb-6" />
+                        <p className="text-slate-600 max-w-xl mx-auto">
+                            Remplissez ce formulaire et notre équipe vous contactera sous <span className="font-semibold">24h</span> pour répondre à toutes vos questions.
                         </p>
                     </div>
 
-                    <Suspense fallback={<div className="text-light/60 text-center">Chargement...</div>}>
-                        <ContactForm />
-                    </Suspense>
+                    {/* Form */}
+                    <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-lg shadow-gray-200/60 animate-enter delay-100">
+                        <Suspense fallback={
+                            <div className="flex items-center justify-center py-12">
+                                <div className="flex items-center gap-3 text-slate-500">
+                                    <div className="size-5 animate-spin rounded-full border-2 border-slate-300 border-t-primary" />
+                                    <span>Chargement...</span>
+                                </div>
+                            </div>
+                        }>
+                            <ContactForm />
+                        </Suspense>
+                    </div>
+
+                    {/* Help Box */}
+                    <div className="mt-8 rounded-lg border border-gold/20 bg-gradient-to-br from-gold/5 to-transparent p-6 animate-enter delay-200">
+                        <div className="flex items-start gap-4">
+                            <div className="flex size-10 flex-shrink-0 items-center justify-center rounded-full bg-gold/10">
+                                <span className="material-symbols-outlined text-gold text-[20px]">support_agent</span>
+                            </div>
+                            <div>
+                                <p className="mb-2 text-sm font-bold text-slate-900">Besoin d'aide ?</p>
+                                <p className="text-sm text-slate-600">
+                                    Notre équipe est disponible du lundi au vendredi de 9h à 18h pour répondre à vos questions par téléphone au <span className="font-semibold text-primary">+221 33 123 45 67</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

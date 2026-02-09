@@ -1,159 +1,143 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { Button } from '@/components/ui/Button'
 import { Gallery } from '@/components/sections/Gallery'
-import { getProjectBySlug, getAllProjects } from '@/lib/projects'
-import { MapPin, Eye } from 'lucide-react'
+import { getProjectBySlug } from '@/lib/projects'
 
-interface Props {
-    params: { slug: string }
-}
-
-export function generateStaticParams() {
-    return getAllProjects().map((project) => ({
-        slug: project.slug,
-    }))
-}
-
-export function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
     const project = getProjectBySlug(params.slug)
     if (!project) return { title: 'Projet non trouvé' }
+
     return {
         title: `${project.name} | TEYLIOM EXPERIENCE`,
         description: project.tagline,
     }
 }
 
-export default function ProjectPage({ params }: Props) {
+export default function ProjectPage({ params }: { params: { slug: string } }) {
     const project = getProjectBySlug(params.slug)
-
-    if (!project) {
-        notFound()
-    }
-
-    const hasVirtualTour = project.virtualTours.length > 0
+    if (!project) return notFound()
 
     return (
         <>
             <Header />
-            <main className="min-h-screen">
-                {/* Hero */}
-                <section className="relative h-[70vh] min-h-[500px]">
-                    <Image
-                        src={project.coverImage}
-                        alt={project.name}
-                        fill
-                        className="object-cover"
-                        priority
+            <div className="min-h-screen bg-background pt-20">
+                {/* Hero Section */}
+                <section className="relative h-[70vh] w-full overflow-hidden">
+                    <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url("${project.coverImage}")` }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="flex items-center gap-2 text-primary mb-4">
-                                <MapPin className="w-4 h-4" />
-                                <span className="text-sm tracking-wide">{project.location}</span>
+                    <div className="relative z-10 flex h-full flex-col justify-end p-6 lg:p-12 max-w-[1440px] mx-auto">
+                        <div className="max-w-3xl space-y-4 pb-8 animate-enter">
+                            <div className="flex items-center gap-3">
+                                <span className="rounded bg-white/20 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                                    {project.location}
+                                </span>
+                                {project.status === 'available' && (
+                                    <span className="rounded bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                                        Disponible maintenant
+                                    </span>
+                                )}
                             </div>
-                            <h1 className="font-display text-5xl md:text-7xl text-light mb-4">
+                            <h1 className="font-display text-5xl md:text-7xl font-extrabold uppercase tracking-widest text-white drop-shadow-2xl">
                                 {project.name}
                             </h1>
-                            <p className="text-light/80 text-xl max-w-2xl">
+                            <p className="text-xl md:text-2xl font-light text-white/90">
                                 {project.tagline}
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* Content */}
-                <section className="py-16 md:py-24">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid lg:grid-cols-3 gap-12">
-                            {/* Description */}
-                            <div className="lg:col-span-2">
-                                <h2 className="font-display text-3xl text-light mb-6">Le Projet</h2>
-                                <p className="text-light/70 text-lg leading-relaxed mb-8">
-                                    {project.description}
-                                </p>
-
-                                {/* Features */}
-                                <h3 className="text-primary text-sm tracking-[0.2em] uppercase mb-4">
-                                    Équipements
-                                </h3>
-                                <ul className="grid sm:grid-cols-2 gap-3">
-                                    {project.features.map((feature, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-light/70">
-                                            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
+                {/* Description */}
+                <section className="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
+                    <div className="grid gap-12 md:grid-cols-[2fr,1fr]">
+                        <div className="space-y-6">
+                            <div>
+                                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">À propos</p>
+                                <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6">
+                                    Une résidence <span className="font-bold">d&apos;exception</span>
+                                </h2>
                             </div>
+                            <p className="text-lg leading-relaxed text-slate-600">
+                                {project.description}
+                            </p>
+                        </div>
 
-                            {/* CTA Sidebar */}
-                            <div className="lg:col-span-1">
-                                <div className="sticky top-28 bg-dark-lighter p-6 rounded-sm border border-white/5">
-                                    <h3 className="font-display text-2xl text-light mb-4">
-                                        Intéressé ?
-                                    </h3>
-                                    <p className="text-light/60 text-sm mb-6">
-                                        Nos conseillers sont à votre disposition pour vous présenter ce projet.
-                                    </p>
-
-                                    <div className="space-y-3">
-                                        <Link href={`/contact?projet=${project.slug}`} className="block">
-                                            <Button className="w-full">
-                                                Je suis intéressé
-                                            </Button>
-                                        </Link>
-
-                                        {hasVirtualTour && (
-                                            <Link href={`/visite/${project.slug}`} className="block">
-                                                <Button variant="outline" className="w-full">
-                                                    <Eye className="w-4 h-4 mr-2" />
-                                                    Visite virtuelle 360°
-                                                </Button>
-                                            </Link>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
+                        {/* Features */}
+                        <div className="space-y-4">
+                            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-4">Équipements</p>
+                            <ul className="space-y-3">
+                                {project.features.map((feature, index) => (
+                                    <li key={index} className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 mt-0.5">
+                                            <div className="flex size-5 items-center justify-center rounded-full bg-primary/10">
+                                                <span className="material-symbols-outlined text-[14px] text-primary">check</span>
+                                            </div>
+                                        </div>
+                                        <span className="text-sm text-slate-700">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </section>
 
                 {/* Gallery */}
-                {project.images.length > 0 && (
-                    <section className="py-16 bg-dark-lighter">
-                        <div className="max-w-7xl mx-auto px-6">
-                            <h2 className="font-display text-3xl text-light mb-8 text-center">
-                                Galerie
-                            </h2>
-                            <Gallery images={project.images} projectName={project.name} />
-                        </div>
-                    </section>
-                )}
-
-                {/* Bottom CTA */}
-                <section className="py-16">
-                    <div className="max-w-2xl mx-auto px-6 text-center">
-                        <h2 className="font-display text-3xl text-light mb-4">
-                            Prêt à découvrir {project.name} ?
+                <section className="mx-auto max-w-[1440px] px-6 py-12 lg:px-12">
+                    <div className="mb-8">
+                        <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Galerie</p>
+                        <h2 className="text-3xl font-light text-slate-900">
+                            Découvrez <span className="font-bold">{project.name}</span>
                         </h2>
-                        <p className="text-light/60 mb-8">
-                            Prenez rendez-vous avec nos conseillers pour une présentation personnalisée.
-                        </p>
-                        <Link href={`/contact?projet=${project.slug}`}>
-                            <Button size="lg">
-                                Nous contacter
-                            </Button>
-                        </Link>
+                    </div>
+                    <Gallery images={project.images} projectName={project.name} />
+                </section>
+
+                {/* CTA Section */}
+                <section className="border-y border-slate-200 bg-slate-50 py-16">
+                    <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div className="max-w-2xl">
+                                <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-4">
+                                    Intéressé par <span className="font-bold text-primary">{project.name}</span> ?
+                                </h2>
+                                <p className="text-slate-600">
+                                    Remplissez notre formulaire de contact et notre équipe vous contactera sous 24h pour organiser une visite.
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row gap-4">
+                                {project.virtualTours.length > 0 && (
+                                    <Link
+                                        href={`/visite/${project.slug}`}
+                                        className="flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary bg-white px-6 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white"
+                                    >
+                                        <span className="material-symbols-outlined text-[20px]">360</span>
+                                        <span>Visite virtuelle 360°</span>
+                                    </Link>
+                                )}
+                                <Link
+                                    href={`/contact?projet=${project.slug}`}
+                                    className="flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/25"
+                                >
+                                    <span>Je suis intéressé</span>
+                                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </section>
-            </main>
-            <Footer />
+
+                {/* Footer */}
+                <footer className="w-full bg-white py-8 text-center border-t border-slate-200">
+                    <div className="mx-auto max-w-[1440px] px-6">
+                        <p className="text-xs text-slate-500">© 2026 Teyliom Group. Tous droits réservés.</p>
+                    </div>
+                </footer>
+            </div>
         </>
     )
 }

@@ -10,23 +10,19 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#C9A84C',
-          light: '#F5E6B8',
-          dark: '#8B6914',
+          DEFAULT: '#b91c2e',
+          dark: '#9a1725',
+          light: '#dc3545',
         },
-        dark: {
-          DEFAULT: '#0A0A0A',
-          lighter: '#1A1A2E',
-          gray: '#2D2D44',
-        },
-        light: {
-          DEFAULT: '#F5F5F5',
-          gray: '#E8E8E8',
-        },
+        gold: '#C5A059',
+        background: '#f6f6f8',
+        surface: '#ffffff',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        display: ['Manrope', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-red': 'linear-gradient(135deg, #b91c2e 0%, #d62f45 100%)',
       },
     },
   },
