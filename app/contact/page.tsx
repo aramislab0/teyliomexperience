@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ContactForm } from '@/components/sections/ContactForm'
@@ -24,7 +25,9 @@ export default function ContactPage() {
                         </p>
                     </div>
 
-                    <ContactForm />
+                    <Suspense fallback={<div className="text-light/60 text-center">Chargement...</div>}>
+                        <ContactForm />
+                    </Suspense>
                 </div>
             </main>
             <Footer />
