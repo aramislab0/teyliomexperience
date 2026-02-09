@@ -1,14 +1,13 @@
-export default function Home() {
+import { Hero } from '@/components/sections/Hero'
+import { Header } from '@/components/layout/Header'
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-5xl font-display text-primary mb-4">
-          TEYLIOM EXPERIENCE
-        </h1>
-        <p className="text-light/70">
-          Plateforme en cours de déploiement...
-        </p>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+      </main>
+    </>
   )
 }
