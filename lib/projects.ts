@@ -51,11 +51,25 @@ export const projects: Project[] = [
         ],
         virtualTours: [
             {
-                id: 'lynea-living',
-                name: 'Appartement témoin',
-                thumbnail: 'https://placehold.co/400x300/f6f6f8/b91c2e?text=VR+Lynea',
-                panoramaUrl: 'https://pannellum.org/images/cerro-toco-0.jpg',
+                id: 'lynea-salon',
+                name: 'Salon & Salle à Manger',
+                thumbnail: '/360/lynea/salon.jpg',
+                panoramaUrl: '/360/lynea/salon.jpg',
                 initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+            {
+                id: 'lynea-chambre',
+                name: 'Suite Parentale',
+                thumbnail: '/360/lynea/chambre.jpg',
+                panoramaUrl: '/360/lynea/chambre.jpg',
+                initialView: { pitch: 0, yaw: 90, hfov: 110 },
+            },
+            {
+                id: 'lynea-couloir',
+                name: 'Couloir & Ascenseurs',
+                thumbnail: '/360/lynea/couloir.jpg',
+                panoramaUrl: '/360/lynea/couloir.jpg',
+                initialView: { pitch: 0, yaw: 0, hfov: 110 },
             },
         ],
         features: [
