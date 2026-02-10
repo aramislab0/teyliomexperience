@@ -141,6 +141,27 @@ export const projects: Project[] = [
                 panoramaUrl: '/360/divinity/salle-sport.png',
                 initialView: { pitch: 0, yaw: 90, hfov: 110 },
             },
+            {
+                id: 'divinity-salon-luxe',
+                name: 'Salon Luxe Marbre',
+                thumbnail: '/360/divinity/salon-luxe.jpg',
+                panoramaUrl: '/360/divinity/salon-luxe.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+            {
+                id: 'divinity-piscine-rooftop',
+                name: 'Piscine Rooftop Panoramique',
+                thumbnail: '/360/divinity/piscine-rooftop.jpg',
+                panoramaUrl: '/360/divinity/piscine-rooftop.jpg',
+                initialView: { pitch: 0, yaw: 90, hfov: 110 },
+            },
+            {
+                id: 'divinity-sport-ocean',
+                name: 'Salle de Sport Océan',
+                thumbnail: '/360/divinity/salle-sport-2.jpg',
+                panoramaUrl: '/360/divinity/salle-sport-2.jpg',
+                initialView: { pitch: 0, yaw: 0, hfov: 110 },
+            },
         ],
         features: [
             'Vue océan panoramique',
