@@ -1,142 +1,123 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { User, Badge, Mail, Phone, Building2, ChevronDown, Info } from 'lucide-react'
+import { User, Mail, Phone, Building2, ChevronDown, Info, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
-import { getAllProjects } from '@/lib/projects'
+
+// Interface pour les données du lead (compatible avec l'API)
+interface LeadData {
+    nom: string;
+    email: string;
+    telephone: string;
+    projet: 'Divinity' | 'Lynea' | 'Shiramba' | 'Coralie';
+    message: string;
+}
 
 const schema = z.object({
-    firstName: z.string().min(2, 'Le prénom doit contenir au moins 2 caractères'),
-    lastName: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
+    nom: z.string().min(2, 'Le nom complet doit contenir au moins 2 caractères'),
     email: z.string().email('Adresse email invalide'),
-    phone: z.string()
+    telephone: z.string()
         .min(8, 'Numéro de téléphone invalide')
         .regex(/^[+]?[\d\s-]+$/, 'Format de numéro invalide'),
-    project: z.string().min(1, 'Veuillez sélectionner un projet'),
-    honeypot: z.string().max(0), // Anti-spam
+    projet: z.enum(['Divinity', 'Lynea', 'Shiramba', 'Coralie'], {
+        errorMap: () => ({ message: 'Veuillez sélectionner un projet' }),
+    }),
+    message: z.string().min(10, 'Le message doit contenir au moins 10 caractères'),
 })
 
 type FormData = z.infer<typeof schema>
 
+const projects = [
+    { name: 'DIVINITY', slug: 'Divinity', location: 'Front de mer' },
+    { name: 'LYNEA', slug: 'Lynea', location: 'Cité Keur Gorgui' },
+    { name: 'SHIRAMBA', slug: 'Shiramba', location: 'Mermoz' },
+    { name: 'CORALIE', slug: 'Coralie', location: 'Almadies' },
+]
+
 export function ContactForm() {
     const router = useRouter()
-    const searchParams = useSearchParams()
-    const preselectedProject = searchParams.get('projet')
-
-    const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
-    const projects = getAllProjects()
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = useState<string>('')
 
     const {
         register,
         handleSubmit,
-        setValue,
+        reset,
         formState: { errors },
     } = useForm<FormData>({
         resolver: zodResolver(schema),
         defaultValues: {
-            firstName: '',
-            lastName: '',
+            nom: '',
             email: '',
-            phone: '+221 ',
-            project: preselectedProject || '',
-            honeypot: '',
+            telephone: '+221 ',
+            projet: undefined,
+            message: '',
         },
     })
 
-    useEffect(() => {
-        if (preselectedProject) {
-            setValue('project', preselectedProject)
-        }
-    }, [preselectedProject, setValue])
-
     const onSubmit = async (data: FormData) => {
-        if (data.honeypot) {
-            router.push('/merci')
-            return
-        }
-
         setStatus('loading')
+        setErrorMessage('')
 
         try {
-            const response = await fetch('/api/lead', {
+            console.log('[Form] Envoi des données:', data)
+
+            const response = await fetch('/api/submit-lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    email: data.email,
-                    phone: data.phone,
-                    project: data.project,
-                }),
+                body: JSON.stringify(data),
             })
 
-            if (response.ok) {
-                router.push('/merci')
+            const result = await response.json()
+
+            if (response.ok && result.success) {
+                console.log('[Form] Succès!')
+                setStatus('success')
+                reset() // Réinitialiser le formulaire
+
+                // Redirection après 2 secondes
+                setTimeout(() => {
+                    router.push('/merci')
+                }, 2000)
             } else {
+                console.error('[Form] Erreur:', result.error)
                 setStatus('error')
+                setErrorMessage(result.error || 'Une erreur est survenue')
             }
-        } catch {
+        } catch (error) {
+            console.error('[Form] Erreur réseau:', error)
             setStatus('error')
+            setErrorMessage('Erreur de connexion. Veuillez réessayer.')
         }
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            <input
-                type="text"
-                {...register('honeypot')}
-                className="absolute -left-[9999px]"
-                tabIndex={-1}
-                autoComplete="off"
-            />
-
-            {/* Prénom */}
+            {/* Nom complet */}
             <div>
-                <label htmlFor="firstName" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
-                    Prénom *
+                <label htmlFor="nom" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
+                    Nom complet *
                 </label>
                 <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
                         <User size={20} className="text-slate-400" />
                     </div>
                     <input
-                        id="firstName"
+                        id="nom"
                         type="text"
-                        {...register('firstName')}
-                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.firstName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                        {...register('nom')}
+                        disabled={status === 'loading'}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${errors.nom ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
                             }`}
-                        placeholder="Votre prénom"
+                        placeholder="Prénom et Nom"
                     />
                 </div>
-                {errors.firstName && (
-                    <p className="mt-1 text-sm text-red-500">{errors.firstName.message}</p>
-                )}
-            </div>
-
-            {/* Nom */}
-            <div>
-                <label htmlFor="lastName" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
-                    Nom *
-                </label>
-                <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                        <Badge size={20} className="text-slate-400" />
-                    </div>
-                    <input
-                        id="lastName"
-                        type="text"
-                        {...register('lastName')}
-                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.lastName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
-                            }`}
-                        placeholder="Votre nom"
-                    />
-                </div>
-                {errors.lastName && (
-                    <p className="mt-1 text-sm text-red-500">{errors.lastName.message}</p>
+                {errors.nom && (
+                    <p className="mt-1 text-sm text-red-500">{errors.nom.message}</p>
                 )}
             </div>
 
@@ -153,7 +134,8 @@ export function ContactForm() {
                         id="email"
                         type="email"
                         {...register('email')}
-                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                        disabled={status === 'loading'}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
                             }`}
                         placeholder="votre@email.com"
                     />
@@ -165,7 +147,7 @@ export function ContactForm() {
 
             {/* Téléphone */}
             <div>
-                <label htmlFor="phone" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
+                <label htmlFor="telephone" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Téléphone *
                 </label>
                 <div className="relative">
@@ -173,22 +155,23 @@ export function ContactForm() {
                         <Phone size={20} className="text-slate-400" />
                     </div>
                     <input
-                        id="phone"
+                        id="telephone"
                         type="tel"
-                        {...register('phone')}
-                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors ${errors.phone ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                        {...register('telephone')}
+                        disabled={status === 'loading'}
+                        className={`h-12 w-full rounded-lg border bg-white pl-12 pr-4 text-slate-900 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${errors.telephone ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
                             }`}
                         placeholder="+221 77 123 45 67"
                     />
                 </div>
-                {errors.phone && (
-                    <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
+                {errors.telephone && (
+                    <p className="mt-1 text-sm text-red-500">{errors.telephone.message}</p>
                 )}
             </div>
 
             {/* Projet */}
             <div>
-                <label htmlFor="project" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
+                <label htmlFor="projet" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
                     Projet qui vous intéresse *
                 </label>
                 <div className="relative">
@@ -196,9 +179,10 @@ export function ContactForm() {
                         <Building2 size={20} className="text-slate-400" />
                     </div>
                     <select
-                        id="project"
-                        {...register('project')}
-                        className={`h-12 w-full appearance-none rounded-lg border bg-white pl-12 pr-10 text-slate-900 outline-none transition-colors ${errors.project ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                        id="projet"
+                        {...register('projet')}
+                        disabled={status === 'loading'}
+                        className={`h-12 w-full appearance-none rounded-lg border bg-white pl-12 pr-10 text-slate-900 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${errors.projet ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
                             }`}
                     >
                         <option value="">Sélectionnez un projet</option>
@@ -212,17 +196,51 @@ export function ContactForm() {
                         <ChevronDown size={20} className="text-slate-400" />
                     </div>
                 </div>
-                {errors.project && (
-                    <p className="mt-1 text-sm text-red-500">{errors.project.message}</p>
+                {errors.projet && (
+                    <p className="mt-1 text-sm text-red-500">{errors.projet.message}</p>
                 )}
             </div>
+
+            {/* Message */}
+            <div>
+                <label htmlFor="message" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-700">
+                    Message *
+                </label>
+                <div className="relative">
+                    <div className="pointer-events-none absolute top-3 left-0 flex items-start pl-4">
+                        <MessageSquare size={20} className="text-slate-400" />
+                    </div>
+                    <textarea
+                        id="message"
+                        {...register('message')}
+                        disabled={status === 'loading'}
+                        rows={4}
+                        className={`w-full rounded-lg border bg-white pl-12 pr-4 pt-3 pb-3 text-slate-900 outline-none transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-primary'
+                            }`}
+                        placeholder="Parlez-nous de votre projet..."
+                    />
+                </div>
+                {errors.message && (
+                    <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+                )}
+            </div>
+
+            {/* Success message */}
+            {status === 'success' && (
+                <div className="flex items-start gap-3 rounded-lg bg-green-50 border border-green-200 p-4">
+                    <Info size={20} className="text-green-500 flex-shrink-0" />
+                    <p className="text-sm text-green-700">
+                        ✓ Votre demande a été enregistrée avec succès ! Redirection en cours...
+                    </p>
+                </div>
+            )}
 
             {/* Error message */}
             {status === 'error' && (
                 <div className="flex items-start gap-3 rounded-lg bg-red-50 border border-red-200 p-4">
                     <Info size={20} className="text-red-500 flex-shrink-0" />
                     <p className="text-sm text-red-700">
-                        Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
+                        {errorMessage || 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.'}
                     </p>
                 </div>
             )}
@@ -233,9 +251,9 @@ export function ContactForm() {
                 className="w-full"
                 size="lg"
                 isLoading={status === 'loading'}
-                disabled={status === 'loading'}
+                disabled={status === 'loading' || status === 'success'}
             >
-                {status === 'loading' ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                {status === 'loading' ? 'Envoi en cours...' : status === 'success' ? 'Envoyé !' : 'Envoyer ma demande'}
             </Button>
 
             {/* Privacy notice */}
