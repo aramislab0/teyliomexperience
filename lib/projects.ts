@@ -71,6 +71,13 @@ export const projects: Project[] = [
                 panoramaUrl: '/360/lynea/couloir.jpg',
                 initialView: { pitch: 0, yaw: 0, hfov: 110 },
             },
+            {
+                id: 'lynea-chambre-moderne',
+                name: 'Chambre Moderne',
+                thumbnail: '/360/lynea/chambre-moderne.jpg',
+                panoramaUrl: '/360/lynea/chambre-moderne.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
         ],
         features: [
             'Piscine à débordement',
