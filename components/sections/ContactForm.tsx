@@ -23,9 +23,10 @@ const schema = z.object({
     telephone: z.string()
         .min(8, 'Numéro de téléphone invalide')
         .regex(/^[+]?[\d\s-]+$/, 'Format de numéro invalide'),
-    projet: z.enum(['Divinity', 'Lynea', 'Shiramba', 'Coralie'] as const, {
-        errorMap: () => ({ message: 'Veuillez sélectionner un projet' }),
-    }),
+    projet: z.string().refine(
+        (val) => ['Divinity', 'Lynea', 'Shiramba', 'Coralie'].includes(val),
+        { message: 'Veuillez sélectionner un projet' }
+    ),
     message: z.string().min(10, 'Le message doit contenir au moins 10 caractères'),
 })
 
