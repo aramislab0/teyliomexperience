@@ -181,6 +181,9 @@ export const projects: Project[] = [
             '/projects/shiramba/facade-crepuscule.jpg',
             '/projects/shiramba/salon-salle-manger.jpg',
             '/projects/shiramba/salle-bain-miroir.jpg',
+            '/projects/shiramba/salon-famille.jpg',
+            '/projects/shiramba/facade-complete.jpg',
+            '/projects/shiramba/facade-angle-jour.jpg',
         ],
         virtualTours: [],
         features: [
