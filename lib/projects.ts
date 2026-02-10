@@ -43,6 +43,11 @@ export const projects: Project[] = [
             '/projects/lynea/facade-terrasses.jpg',
             '/projects/lynea/facade-jour.png',
             '/projects/lynea/rooftop-jour.jpg',
+            '/projects/lynea/salle-bain-moderne.jpg',
+            '/projects/lynea/salle-bain-douche.jpg',
+            '/projects/lynea/salon-tv-cuisine.png',
+            '/projects/lynea/salon-ouvert.png',
+            '/projects/lynea/salon-salle-manger.png',
         ],
         virtualTours: [
             {
