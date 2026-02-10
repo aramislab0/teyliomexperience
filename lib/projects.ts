@@ -31,14 +31,13 @@ export const projects: Project[] = [
         name: 'Lynea',
         tagline: "L'élégance contemporaine au cœur de Dakar",
         description: "Lynea incarne la vision d'un habitat moderne et raffiné. Située dans le quartier prisé des Almadies, cette résidence d'exception offre un cadre de vie unique où chaque détail a été pensé pour allier confort absolu et design avant-gardiste. Des appartements spacieux aux finitions haut de gamme, baignés de lumière naturelle, avec des vues imprenables sur l'océan Atlantique.",
-        coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1YMBJuj0OXbvS-ZIbH8Z3OvhJDJq_lPUh7dcXK2UJtyzTUB_9PmSfdn3TmOZ4Fjh_8StvO0RZQmD4xwVkRN4N4_vXh1bQlALm4nwmkx7hbWBELzaZ4l_O-TwTYUj2DKioPLNZy72DhQoHg_sW5p6buqlzLmHqokL0EqC1tWwem7fOTF8HvizQO_Y0d3lGGi6Qw5TGZpZfj33JP4FibiQ_U8r1c5u8ucwlhaOcNNGpKisa-R_Jg4RZifeH5xOygHl8hWI9c5djm0In',
+        coverImage: '/projects/lynea/rooftop-aerien.jpg',
         images: [
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuB1YMBJuj0OXbvS-ZIbH8Z3OvhJDJq_lPUh7dcXK2UJtyzTUB_9PmSfdn3TmOZ4Fjh_8StvO0RZQmD4xwVkRN4N4_vXh1bQlALm4nwmkx7hbWBELzaZ4l_O-TwTYUj2DKioPLNZy72DhQoHg_sW5p6buqlzLmHqokL0EqC1tWwem7fOTF8HvizQO_Y0d3lGGi6Qw5TGZpZfj33JP4FibiQ_U8r1c5u8ucwlhaOcNNGpKisa-R_Jg4RZifeH5xOygHl8hWI9c5djm0In',
-            'https://placehold.co/1920x1080/f6f6f8/b91c2e?text=Lynea+Gallery+2',
-            'https://placehold.co/1920x1080/ffffff/b91c2e?text=Lynea+Gallery+3',
-            'https://placehold.co/1920x1080/f6f6f8/b91c2e?text=Lynea+Gallery+4',
-            'https://placehold.co/1920x1080/ffffff/b91c2e?text=Lynea+Gallery+5',
-            'https://placehold.co/1920x1080/f6f6f8/b91c2e?text=Lynea+Gallery+6',
+            '/projects/lynea/rooftop-aerien.jpg',
+            '/projects/lynea/facade-principale.jpg',
+            '/projects/lynea/facade-angle.jpg',
+            '/projects/lynea/chambre-artistique.png',
+            '/projects/lynea/cuisine-marbre.jpg',
         ],
         virtualTours: [
             {
