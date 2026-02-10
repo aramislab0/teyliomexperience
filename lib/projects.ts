@@ -73,6 +73,11 @@ export const projects: Project[] = [
             '/projects/divinity/chambre-1.jpg',
             '/projects/divinity/cuisine-1.jpg',
             '/projects/divinity/cuisine-2.jpg',
+            '/projects/divinity/terrasse-piscine-ocean-1.jpg',
+            '/projects/divinity/terrasse-piscine-ocean-2.jpg',
+            '/projects/divinity/piscine-lounge-artistique.jpg',
+            '/projects/divinity/terrasse-piscine-ocean-3.jpg',
+            '/projects/divinity/piscine-lounge-nuageux.jpg',
         ],
         virtualTours: [
             {
