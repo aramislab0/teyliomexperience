@@ -66,12 +66,13 @@ export const projects: Project[] = [
         name: 'Divinity',
         tagline: "Le luxe absolu face à l'océan",
         description: "Divinity redéfinit les standards du luxe résidentiel à Dakar. Implantée sur la prestigieuse Corniche Ouest, cette adresse d'exception offre une expérience de vie incomparable. Chaque lever de soleil sur l'Atlantique devient un spectacle privé, chaque instant un moment de grâce. Des penthouses aux villas, Divinity est la promesse d'un art de vivre sans compromis.",
-        coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBT8K4MlEQGg5SRTMTtOp8Qoj1lW7nmH-Vb4e4rRzhTpwKjvO5FBmepwcYUnxXmHV16RtOWBwpcrf6aRCBE23WoHLkV3TZsfy4jsg19IBsFVVdPifepT75YMUT05hJnD44R5McdcjJlSVE4WydU6y6oPZBENI2eQvD6NhQdsKyfbUl23uRg_-zJ0hMyC50RF9rtZdcLkJinXwpsqcrsF4pek_IaMJXDWGKDRMw3QE7LeeWHkd7pksmdSf-KVwA4AsqTli_dD8R6zu3A',
+        coverImage: '/projects/divinity/piscine-panoramique.jpg',
         images: [
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuBT8K4MlEQGg5SRTMTtOp8Qoj1lW7nmH-Vb4e4rRzhTpwKjvO5FBmepwcYUnxXmHV16RtOWBwpcrf6aRCBE23WoHLkV3TZsfy4jsg19IBsFVVdPifepT75YMUT05hJnD44R5McdcjJlSVE4WydU6y6oPZBENI2eQvD6NhQdsKyfbUl23uRg_-zJ0hMyC50RF9rtZdcLkJinXwpsqcrsF4pek_IaMJXDWGKDRMw3QE7LeeWHkd7pksmdSf-KVwA4AsqTli_dD8R6zu3A',
-            'https://placehold.co/1920x1080/f6f6f8/b91c2e?text=Divinity+Gallery+2',
-            'https://placehold.co/1920x1080/ffffff/b91c2e?text=Divinity+Gallery+3',
-            'https://placehold.co/1920x1080/f6f6f8/b91c2e?text=Divinity+Gallery+4',
+            '/projects/divinity/piscine-panoramique.jpg',
+            '/projects/divinity/chambre-2.jpg',
+            '/projects/divinity/chambre-1.jpg',
+            '/projects/divinity/cuisine-1.jpg',
+            '/projects/divinity/cuisine-2.jpg',
         ],
         virtualTours: [
             {
