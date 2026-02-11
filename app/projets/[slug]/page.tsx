@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Header } from '@/components/layout/Header'
 import { Gallery } from '@/components/sections/Gallery'
 import { getProjectBySlug } from '@/lib/projects'
@@ -25,9 +26,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <div className="min-h-screen bg-background pt-20">
                 {/* Hero Section */}
                 <section className="relative h-[70vh] w-full overflow-hidden">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{ backgroundImage: `url("${project.coverImage}")` }}
+                    {/* Hero Image */}
+                    <Image
+                        src={project.coverImage}
+                        alt={project.name}
+                        fill
+                        priority
+                        className="object-cover"
+                        sizes="100vw"
+                        quality={90}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent" />
 
@@ -138,7 +145,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                         <p className="text-xs text-slate-500">© 2026 Teyliom Group. Tous droits réservés.</p>
                     </div>
                 </footer>
-            </div>
+            </div >
         </>
     )
 }
