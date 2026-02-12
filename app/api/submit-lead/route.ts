@@ -7,7 +7,7 @@ interface LeadData {
   email: string;
   telephone: string;
   projet: 'Divinity' | 'Lynea' | 'Shiramba' | 'Coralie';
-  message: string;
+  message?: string; // Optional field
 }
 
 // Configuration Google Sheets
