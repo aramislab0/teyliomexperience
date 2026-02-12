@@ -97,13 +97,13 @@ export async function POST(request: NextRequest) {
 
     console.log('8. Données à insérer:', rowData);
     console.log('SpreadsheetId:', SPREADSHEET_ID);
-    console.log('Range: Sheet1!A:F');
+    console.log('Range: Feuille 1!A:F');
 
     // 9. Ajout de la ligne dans Google Sheets
     console.log('9. Insertion dans Google Sheet...');
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: 'Sheet1!A:F',
+      range: 'Feuille 1!A:F',  // Updated to use French sheet name
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [rowData],
