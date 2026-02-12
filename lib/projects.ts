@@ -30,7 +30,7 @@ export const projects: Project[] = [
         slug: 'lynea',
         name: 'Lynea',
         tagline: "L'élégance contemporaine au cœur de Dakar",
-        description: "Lynea incarne la vision d'un habitat moderne et raffiné. Située dans le quartier prisé des Almadies, cette résidence d'exception offre un cadre de vie unique où chaque détail a été pensé pour allier confort absolu et design avant-gardiste. Des appartements spacieux aux finitions haut de gamme, baignés de lumière naturelle, avec des vues imprenables sur l'océan Atlantique.",
+        description: "Lynea incarne la vision d'un habitat moderne et raffiné. Située sur l'Avenue Cheikh Anta Diop, cette résidence d'exception offre un cadre de vie unique où chaque détail a été pensé pour allier confort absolu et design avant-gardiste. Des appartements spacieux aux finitions haut de gamme, baignés de lumière naturelle, au cœur d'un quartier dynamique et prestigieux.",
         coverImage: '/projects/lynea/rooftop-aerien.jpg',
         images: [
             '/projects/lynea/rooftop-aerien.jpg',
@@ -94,7 +94,7 @@ export const projects: Project[] = [
             'Espaces verts paysagers',
             'Rooftop lounge',
         ],
-        location: 'Almadies, Dakar',
+        location: 'Avenue Cheikh Anta Diop, Dakar',
         status: 'available',
     },
     {
@@ -102,7 +102,7 @@ export const projects: Project[] = [
         slug: 'divinity',
         name: 'Divinity',
         tagline: "Le luxe absolu face à l'océan",
-        description: "Divinity redéfinit les standards du luxe résidentiel à Dakar. Implantée sur la prestigieuse Corniche Ouest, cette adresse d'exception offre une expérience de vie incomparable. Chaque lever de soleil sur l'Atlantique devient un spectacle privé, chaque instant un moment de grâce. Des penthouses aux villas, Divinity est la promesse d'un art de vivre sans compromis.",
+        description: "Divinity redéfinit les standards du luxe résidentiel à Dakar. Implantée aux Mamelles, cette adresse d'exception offre une expérience de vie incomparable dans un quartier prisé offrant sérénité et prestige. Chaque détail a été pensé pour offrir un confort absolu. Des penthouses aux villas, Divinity est la promesse d'un art de vivre sans compromis.",
         coverImage: '/projects/divinity/piscine-panoramique.jpg',
         images: [
             '/projects/divinity/piscine-panoramique.jpg',
@@ -204,7 +204,7 @@ export const projects: Project[] = [
             'Conciergerie',
             'Majordome personnel',
         ],
-        location: 'Corniche Ouest, Dakar',
+        location: 'Mamelles, Dakar',
         status: 'available',
     },
     {
@@ -212,7 +212,7 @@ export const projects: Project[] = [
         slug: 'coralie',
         name: 'Coralie',
         tagline: "Luxe, Harmonie, Exception, Pieds dans l'eau",
-        description: "Coralie propose un art de vivre unique où architecture contemporaine et environnement naturel se conjuguent harmonieusement. Nichée dans le quartier paisible de Ngor, cette résidence offre un refuge de sérénité à quelques minutes du centre-ville. Un havre de paix où les familles s'épanouissent dans un cadre verdoyant et sécurisé.",
+        description: "Coralie propose un art de vivre unique où architecture contemporaine et environnement naturel se conjuguent harmonieusement. Implantée sur la prestigieuse Corniche Ouest, cette résidence offre des vues imprenables sur l'océan Atlantique. Un havre de paix où les familles s'épanouissent dans un cadre d'exception, alliant luxe et tranquillité.",
         coverImage: '/projects/coralie/facade-nuit.jpg',
         images: [
             '/projects/coralie/salon-decoratif.jpg',
@@ -233,7 +233,7 @@ export const projects: Project[] = [
             'Vue Ocean pour chaque appartement',
             'Accès Plage privée',
         ],
-        location: 'Ngor, Dakar',
+        location: 'Corniche Ouest, Dakar',
         status: 'coming_soon',
     },
     {
@@ -241,7 +241,7 @@ export const projects: Project[] = [
         slug: 'shiramba',
         name: 'Shiramba',
         tagline: "L'excellence architecturale africaine",
-        description: "Shiramba célèbre l'héritage architectural africain réinterprété avec audace et modernité. Située à Mermoz, cette résidence visionnaire marie traditions séculaires et innovations durables. Un projet qui incarne l'Afrique de demain : ambitieuse, créative et résolument tournée vers l'avenir.",
+        description: "Shiramba célèbre l'héritage architectural africain réinterprété avec audace et modernité. Située à Diamniadio, cette résidence visionnaire marie traditions séculaires et innovations durables. Un projet qui incarne l'Afrique de demain : ambitieuse, créative et résolument tournée vers l'avenir.",
         coverImage: '/projects/shiramba/facade-rue.jpg',
         images: [
             '/projects/shiramba/facade-rue.jpg',
@@ -267,7 +267,7 @@ export const projects: Project[] = [
             'Artisanat local',
             'Centre communautaire',
         ],
-        location: 'Mermoz, Dakar',
+        location: 'Diamniadio',
         status: 'coming_soon',
     },
 ]

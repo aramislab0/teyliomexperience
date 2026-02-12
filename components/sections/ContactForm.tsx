@@ -34,10 +34,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 const projects = [
-    { name: 'DIVINITY', slug: 'Divinity', location: 'Front de mer' },
-    { name: 'LYNEA', slug: 'Lynea', location: 'Cité Keur Gorgui' },
-    { name: 'SHIRAMBA', slug: 'Shiramba', location: 'Mermoz' },
-    { name: 'CORALIE', slug: 'Coralie', location: 'Almadies' },
+    { name: 'DIVINITY', slug: 'Divinity', location: 'Mamelles' },
+    { name: 'LYNEA', slug: 'Lynea', location: 'Avenue Cheikh Anta Diop' },
+    { name: 'SHIRAMBA', slug: 'Shiramba', location: 'Diamniadio' },
+    { name: 'CORALIE', slug: 'Coralie', location: 'Corniche Ouest' },
 ]
 
 export function ContactForm() {
