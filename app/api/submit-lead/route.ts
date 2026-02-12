@@ -43,11 +43,11 @@ export async function POST(request: NextRequest) {
 
     // 3. Validation des données
     const { nom, email, telephone, projet, message } = leadData;
-    
-    if (!nom || !email || !telephone || !projet || !message) {
+
+    if (!nom || !email || !telephone || !projet) {
       console.error('[API] Champs manquants:', { nom: !!nom, email: !!email, telephone: !!telephone, projet: !!projet, message: !!message });
       return NextResponse.json(
-        { success: false, error: 'Tous les champs sont requis' },
+        { success: false, error: 'Les champs nom, email, téléphone et projet sont requis' },
         { status: 400 }
       );
     }
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('[API] Erreur lors de l\'enregistrement du lead:', error);
-    
+
     // Log plus détaillé de l'erreur
     if (error instanceof Error) {
       console.error('[API] Message d\'erreur:', error.message);

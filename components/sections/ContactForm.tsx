@@ -28,7 +28,7 @@ const schema = z.object({
                 .regex(/^[+]?[\d-]+$/, 'Format de numéro invalide')
         ),
     projet: z.enum(['Divinity', 'Lynea', 'Shiramba', 'Coralie']),
-    message: z.string().min(10, 'Le message doit contenir au moins 10 caractères'),
+    message: z.string().optional(),
 })
 
 type FormData = z.infer<typeof schema>
