@@ -3,6 +3,11 @@ export function Footer() {
         <footer className="bg-dark border-t border-white/5 py-8">
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <p className="text-primary font-display text-lg mb-2">TEYLIOM</p>
+                <p className="text-light/50 text-sm mb-3">
+                    167 Avenue Place 71, Dakar 16144
+                    <span className="mx-2 text-light/20">|</span>
+                    Tél : 33 829 62 62
+                </p>
                 <p className="text-light/50 text-sm">
                     © 2026 Teyliom Properties. Tous droits réservés.
                     <span className="mx-2 text-light/20">|</span>
