@@ -13,7 +13,7 @@ export async function POST(request: Request) {
         }
 
         const emailBody = {
-            _subject: `Teyliom Lead - ${projet}`,
+            _subject: `🔥 Teyliom Lead - ${projet}`,
             Nom: nom,
             Email: email,
             Telephone: telephone,
@@ -21,10 +21,11 @@ export async function POST(request: Request) {
             Message: message || 'Aucun message',
             Date: new Date().toLocaleString('fr-FR', { timeZone: 'Africa/Dakar' }),
             _template: 'box',
-            _captcha: 'false'
+            _captcha: 'false',
+            _cc: 'dkonte26@gmail.com'
         };
 
-        const response = await fetch('https://formsubmit.co/ajax/niangassane1@gmail.com', {
+        const response = await fetch('https://formsubmit.co/ajax/diama.konte@teyliom.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
