@@ -6,7 +6,7 @@ export function Footer() {
                 <p className="text-light/50 text-sm mb-3">
                     167 Avenue Place 71, Dakar 16144
                     <span className="mx-2 text-light/20">|</span>
-                    Tél : 33 829 62 62
+                    Tél : 338296259
                 </p>
                 <p className="text-light/50 text-sm">
                     © 2026 Teyliom Properties. Tous droits réservés.

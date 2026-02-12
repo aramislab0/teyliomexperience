@@ -52,7 +52,7 @@ export default function ContactPage() {
                             <div>
                                 <p className="mb-2 text-sm font-bold text-slate-900">Besoin d'aide ?</p>
                                 <p className="text-sm text-slate-600">
-                                    Notre équipe est disponible du lundi au vendredi de 9h à 18h pour répondre à vos questions par téléphone au <span className="font-semibold text-primary">33 829 62 62</span>.
+                                    Notre équipe est disponible du lundi au vendredi de 9h à 18h pour répondre à vos questions par téléphone au <span className="font-semibold text-primary">338296259</span>.
                                 </p>
                             </div>
                         </div>
