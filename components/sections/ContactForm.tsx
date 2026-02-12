@@ -21,8 +21,12 @@ const schema = z.object({
     nom: z.string().min(2, 'Le nom complet doit contenir au moins 2 caractères'),
     email: z.string().email('Adresse email invalide'),
     telephone: z.string()
-        .min(8, 'Numéro de téléphone invalide')
-        .regex(/^[+]?[\d\s-]+$/, 'Format de numéro invalide'),
+        .transform((val) => val.replace(/\s/g, '')) // Remove spaces for validation
+        .pipe(
+            z.string()
+                .min(8, 'Numéro de téléphone invalide')
+                .regex(/^[+]?[\d-]+$/, 'Format de numéro invalide')
+        ),
     projet: z.enum(['Divinity', 'Lynea', 'Shiramba', 'Coralie']),
     message: z.string().min(10, 'Le message doit contenir au moins 10 caractères'),
 })
