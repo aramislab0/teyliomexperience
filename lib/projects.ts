@@ -106,6 +106,8 @@ export const projects: Project[] = [
         coverImage: '/projects/divinity/piscine-panoramique.jpg',
         images: [
             '/projects/divinity/piscine-panoramique.jpg',
+            '/projects/divinity/facade-angle-rue.jpg',
+            '/projects/divinity/facade-terrasses-jour.jpg',
             '/projects/divinity/chambre-2.jpg',
             '/projects/divinity/chambre-1.jpg',
             '/projects/divinity/cuisine-1.jpg',
