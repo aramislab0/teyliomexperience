@@ -68,8 +68,8 @@ export function ContactForm() {
         try {
             console.log('[Form] Envoi des données:', data)
 
-            // Using backup FormSubmit route for reliability
-            const response = await fetch('/api/submit-lead-backup', {
+            // Try primary route (Google Sheets)
+            const response = await fetch('/api/submit-lead', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,22 +79,40 @@ export function ContactForm() {
 
             const result = await response.json()
 
-            if (!response.ok || !result.success) {
-                throw new Error(result.error || 'Erreur lors de la soumission')
+            if (response.ok && result.success) {
+                console.log('[Form] Succès via route principale!')
+                setStatus('success')
+                reset()
+                setTimeout(() => router.push('/merci'), 2000)
+                return
             }
 
-            console.log('[Form] Succès!', result)
-            setStatus('success')
-            reset() // Réinitialiser le formulaire
+            // FALLBACK automatique vers FormSubmit
+            console.log('[Form] Route principale échouée, tentative backup...')
+            const backupResponse = await fetch('/api/submit-lead-backup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
 
-            // Redirection après 2 secondes
-            setTimeout(() => {
-                router.push('/merci')
-            }, 2000)
+            const backupResult = await backupResponse.json()
+
+            if (backupResponse.ok && backupResult.success) {
+                console.log('[Form] Succès via backup FormSubmit!')
+                setStatus('success')
+                reset()
+                setTimeout(() => router.push('/merci'), 2000)
+                return
+            }
+
+            throw new Error('Les deux routes ont échoué')
+
         } catch (error: any) {
             console.error('[Form] Erreur:', error)
             setStatus('error')
-            setErrorMessage(error.message || 'Une erreur est survenue')
+            setErrorMessage('Une erreur est survenue. Veuillez réessayer.')
         }
     }
 

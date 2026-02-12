@@ -1,66 +1,53 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     try {
-        console.log('[BACKUP] Début de traitement FormSubmit');
-
         const body = await request.json();
         const { nom, email, telephone, projet, message } = body;
 
-        // Validation des champs requis
         if (!nom || !email || !telephone || !projet) {
             return NextResponse.json(
-                { success: false, error: 'Les champs nom, email, téléphone et projet sont requis' },
+                { error: 'Champs manquants' },
                 { status: 400 }
             );
         }
 
-        // Envoi à FormSubmit
-        console.log('[BACKUP] Envoi à FormSubmit pour:', email);
+        const emailBody = {
+            _subject: `Teyliom Lead - ${projet}`,
+            Nom: nom,
+            Email: email,
+            Telephone: telephone,
+            Projet: projet,
+            Message: message || 'Aucun message',
+            Date: new Date().toLocaleString('fr-FR', { timeZone: 'Africa/Dakar' }),
+            _template: 'box',
+            _captcha: 'false'
+        };
 
-        const formSubmitResponse = await fetch('https://formsubmit.co/ajax/niangassane1@gmail.com', {
+        const response = await fetch('https://formsubmit.co/ajax/niangassane1@gmail.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                _subject: `🏢 Nouvelle demande Teyliom - ${projet}`,
-                'Nom complet': nom,
-                'Email': email,
-                'Téléphone': telephone,
-                'Projet intéressé': projet,
-                'Message': message || 'Aucun message',
-                _template: 'box',
-                _captcha: 'false',
-                _cc: 'assane@aramislab.sn'
-            })
+            body: JSON.stringify(emailBody)
         });
 
-        const formSubmitData = await formSubmitResponse.json();
+        const data = await response.json();
 
-        if (!formSubmitResponse.ok) {
-            console.error('[BACKUP] Erreur FormSubmit:', formSubmitData);
-            throw new Error('FormSubmit error');
+        if (!response.ok) {
+            throw new Error('FormSubmit failed');
         }
 
-        console.log('[BACKUP] Lead enregistré avec succès via FormSubmit');
+        return NextResponse.json({
+            success: true,
+            message: 'Demande envoyée'
+        });
 
+    } catch (error) {
+        console.error('Backup error:', error);
         return NextResponse.json(
-            {
-                success: true,
-                message: 'Votre demande a été enregistrée avec succès',
-            },
-            { status: 200 }
-        );
-
-    } catch (error: any) {
-        console.error('[BACKUP] Erreur:', error.message);
-        return NextResponse.json(
-            {
-                success: false,
-                error: 'Une erreur est survenue lors de l\'enregistrement'
-            },
+            { error: 'Erreur serveur' },
             { status: 500 }
         );
     }
