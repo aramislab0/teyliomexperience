@@ -142,7 +142,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 {/* Footer */}
                 <footer className="w-full bg-white py-8 text-center border-t border-slate-200">
                     <div className="mx-auto max-w-[1440px] px-6">
-                        <p className="text-xs text-slate-500">© 2026 Teyliom Group. Tous droits réservés.</p>
+                        <p className="text-xs text-slate-500">
+                            © 2026 Teyliom Group. Tous droits réservés.
+                            <span className="mx-2 text-slate-300">|</span>
+                            Powered by <a href="https://aramislab.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">Aramis Lab</a>
+                        </p>
                     </div>
                 </footer>
             </div >

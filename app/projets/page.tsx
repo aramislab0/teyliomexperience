@@ -48,8 +48,8 @@ export default function ProjectsPage() {
                                     {/* Status Badge */}
                                     <div className="mb-2 flex items-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-y-1 group-hover:opacity-100">
                                         <span className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'available'
-                                                ? 'bg-primary text-white'
-                                                : 'bg-slate-200 text-slate-700'
+                                            ? 'bg-primary text-white'
+                                            : 'bg-slate-200 text-slate-700'
                                             }`}>
                                             {project.status === 'available' ? 'Disponible' : 'Bientôt'}
                                         </span>
@@ -94,7 +94,11 @@ export default function ProjectsPage() {
 
                 {/* Footer */}
                 <footer className="w-full bg-slate-50 py-6 text-center border-t border-slate-200">
-                    <p className="text-xs text-slate-500">© 2026 Teyliom Group. Tous droits réservés.</p>
+                    <p className="text-xs text-slate-500">
+                        © 2026 Teyliom Group. Tous droits réservés.
+                        <span className="mx-2 text-slate-300">|</span>
+                        Powered by <a href="https://aramislab.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">Aramis Lab</a>
+                    </p>
                 </footer>
             </div>
         </>

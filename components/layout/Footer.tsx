@@ -5,6 +5,8 @@ export function Footer() {
                 <p className="text-primary font-display text-lg mb-2">TEYLIOM</p>
                 <p className="text-light/50 text-sm">
                     © 2026 Teyliom Properties. Tous droits réservés.
+                    <span className="mx-2 text-light/20">|</span>
+                    Powered by <a href="https://aramislab.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light transition-colors">Aramis Lab</a>
                 </p>
                 <p className="text-light/30 text-xs mt-4">
                     <a href="#" className="hover:text-primary transition-colors">Mentions légales</a>
