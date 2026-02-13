@@ -232,7 +232,22 @@ export const projects: Project[] = [
             '/projects/coralie/entree-nuit.jpg',
             '/projects/coralie/facade-plage.jpg',
         ],
-        virtualTours: [],
+        virtualTours: [
+            {
+                id: 'coralie-chambre',
+                name: 'Suite Parentale',
+                thumbnail: '/360/coralie/chambre.jpg',
+                panoramaUrl: '/360/coralie/chambre.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+            {
+                id: 'coralie-salon',
+                name: 'Salon & Salle à Manger',
+                thumbnail: '/360/coralie/salon.jpg',
+                panoramaUrl: '/360/coralie/salon.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+        ],
         features: [
             'Piscines individuelles et collectives',
             'Vue Ocean pour chaque appartement',
@@ -263,7 +278,29 @@ export const projects: Project[] = [
             '/projects/shiramba/facade-complete.jpg',
             '/projects/shiramba/facade-angle-jour.jpg',
         ],
-        virtualTours: [],
+        virtualTours: [
+            {
+                id: 'shiramba-cuisine',
+                name: 'Cuisine Moderne',
+                thumbnail: '/360/shiramba/cuisine.jpg',
+                panoramaUrl: '/360/shiramba/cuisine.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+            {
+                id: 'shiramba-salon',
+                name: 'Salon & Salle à Manger',
+                thumbnail: '/360/shiramba/salon.jpg',
+                panoramaUrl: '/360/shiramba/salon.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+            {
+                id: 'shiramba-chambre',
+                name: 'Suite Parentale',
+                thumbnail: '/360/shiramba/chambre.jpg',
+                panoramaUrl: '/360/shiramba/chambre.jpg',
+                initialView: { pitch: 0, yaw: 180, hfov: 110 },
+            },
+        ],
         features: [
             'Architecture bioclimatique',
             'Matériaux locaux nobles',
