@@ -66,7 +66,7 @@ export const projects: Project[] = [
             },
             {
                 id: 'lynea-chambre',
-                name: 'Suite Parentale',
+                name: 'Partie Commune',
                 thumbnail: '/360/lynea/chambre.jpg',
                 panoramaUrl: '/360/lynea/chambre.jpg',
                 initialView: { pitch: 0, yaw: 90, hfov: 110 },
@@ -141,21 +141,21 @@ export const projects: Project[] = [
             },
             {
                 id: 'divinity-salon-vue-mer',
-                name: 'Salon Vue Mer',
+                name: 'Salle de Sport Vue Mer',
                 thumbnail: '/360/divinity/salon-vue-mer.jpg',
                 panoramaUrl: '/360/divinity/salon-vue-mer.jpg',
                 initialView: { pitch: 0, yaw: 180, hfov: 110 },
             },
             {
                 id: 'divinity-chambre',
-                name: 'Suite Parentale',
+                name: 'Séjour',
                 thumbnail: '/360/divinity/chambre.jpg',
                 panoramaUrl: '/360/divinity/chambre.jpg',
                 initialView: { pitch: 0, yaw: 0, hfov: 110 },
             },
             {
                 id: 'divinity-sport',
-                name: 'Salle de Sport',
+                name: 'Chambre',
                 thumbnail: '/360/divinity/salle-sport.jpg',
                 panoramaUrl: '/360/divinity/salle-sport.jpg',
                 initialView: { pitch: 0, yaw: 90, hfov: 110 },
